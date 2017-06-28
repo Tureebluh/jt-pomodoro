@@ -1,0 +1,142 @@
+@font-face {
+    font-family: greek;
+    src: url(../font/greek.ttf);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: grey;
+}
+#currentTime {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 2px black;
+    fill: wheat;
+}
+.container {
+    margin: auto;
+}
+.header {
+    font-family: greek;
+}
+.length {
+    display: inline-block;
+}
+.length:first-child {
+    float: left;
+}
+.length:last-child {
+    float: right;
+}
+.length > label:first-child {
+    display: block;
+}
+.svg-main {
+    margin: auto;
+}
+.increments {
+    border-radius: 3em;
+    box-shadow: -1px -1px 2px silver;
+    box-shadow: 0 1px 2px black;
+}
+input:focus{
+    outline-color: grey;
+}
+#progressCircle {
+    fill: grey;
+    stroke: black;
+    stroke-width: 3px;
+}
+.start {
+    stroke: lime !important;
+    fill: url(#grad1) !important;
+}
+.break {
+    stroke: red !important;
+    fill: url(#grad2) !important;
+}
+#progressCircle:hover, #currentTime:hover {
+    cursor: pointer;
+}
+/*===========================================*/
+/*==========  Mobile First Method  ==========*/
+/*===========================================*/
+
+/* Extra Small Mobile Devices */
+@media only screen and (min-width : 320px) {
+    html, body {
+        width: 100vw;
+        height: 100vh;
+    }
+    #breakLength, #sessionLength {
+        font-size: 2em;
+        padding: 0 10px 0 10px;
+    }
+    #currentTime {
+        font-size: 5em;
+    }
+    .container {
+        width: 100%;
+        height: 100%;
+        padding: 0 10% 0 10%;
+    }
+    .header {
+        font-size: 3.5em;
+        width: 100%;
+    }
+    .length > input {
+        width: 2em;
+    }
+    .svg-main {
+        height: 50%;
+        width: 100%;
+    }
+    #progressCircle {
+        cx: 50%;
+        cy: 50%;
+        r: 45%;
+    }
+}
+
+/* Medium Mobile Devices */
+@media only screen and (min-width : 410px) {
+    #currentTime {
+        font-size: 6em;
+    }
+}
+
+/* Large Mobile Devices */
+@media only screen and (min-width : 425px) {
+	
+}
+
+/* Extra-Large Mobile Devices */
+@media only screen and (min-width : 480px) {
+	.container {
+        padding: 0 25% 0 25%;
+    }
+    #breakLength, #sessionLength {
+        padding: 0 20px 0 20px;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+	
+}
+
+/* Medium Devices, Desktops - No minimum height */
+@media only screen and (min-width : 1000px){
+	
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+	
+}
+
+/* Extra-Large Devices, Wide Screens */
+@media only screen and (min-width : 1300px) {
+	
+}

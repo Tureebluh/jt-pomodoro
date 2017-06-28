@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Pomodoro</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+        <!-- Bootstrap core CSS -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		
+        <!-- Custom styles for this template -->
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+	
+    <body>
+        <div class="container">
+			<h1 class="header text-center">Pomodoro</h1>
+            
+			<svg viewbox="0 0 300 300" class="svg-main">
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+                        <stop offset="0%" style="stop-color: green; stop-opacity:1" />
+                        <stop id="stop1" offset="0%" style="stop-color: green; stop-opacity:1" />
+                        <stop id="stop2" offset="0%" style="stop-color: green; stop-opacity:0" />
+                        <stop offset="100%" style="stop-color: green; stop-opacity:0" />
+                    </linearGradient>
+                    <linearGradient id="grad2" x1="0%" y1="100%" x2="0%" y2="0%">
+                        <stop offset="0%" style="stop-color: darkred; stop-opacity:1" />
+                        <stop id="stop3" offset="0%" style="stop-color: darkred; stop-opacity:1" />
+                        <stop id="stop4" offset="0%" style="stop-color: darkred; stop-opacity:0" />
+                        <stop offset="100%" style="stop-color: darkred; stop-opacity:0" />
+                    </linearGradient>
+                </defs>
+                <g>
+                    <circle id="progressCircle"/>
+                    <text text-anchor="middle" x="50%" y="50%" id="currentTime">25:00</text>
+                </g>
+            </svg>
+            <span class="length text-center">
+                <label>Break Length</label>            
+                <input id="decremBreakInput" type="button" value="-" class="increments"/>
+                <label id="breakLength">5</label>
+                <input id="incremBreakInput" type="button" value="+" class="increments"/>
+            </span>
+            <span class="length text-center">
+                <label>Session Length</label>
+                <input id="decremSessionInput" type="button" value="-" class="increments"/>
+                <label id="sessionLength">25</label>
+                <input id="incremSessionInput" type="button" value="+" class="increments"/>
+            </span>
+		</div>
+		
+        <!-- JQuery Plugin -->
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	
+		<!-- Bootstrap JS Plugin -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
+        <!-- Custom JS -->
+        <script src="js/custom.js"></script>
+    </body>
+</html>
