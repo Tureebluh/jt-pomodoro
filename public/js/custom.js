@@ -14,12 +14,25 @@ $(document).ready(function(){
     var breakLengthLabel = document.getElementById('breakLength');
     var sessionLengthLabel = document.getElementById('sessionLength');
     var currentTimeLabel = document.getElementById('currentTime');
+    var currentStateLabel = document.getElementById('currentState');
     var progressCircle = document.getElementById('progressCircle');
     var stop1 = document.getElementById('stop1');
     var stop2 = document.getElementById('stop2');
 
-    var timer = setInterval(startTimer, 1000);
+    var timer = 0;
+    var btnTimer = 0;
+    var heldBtn = 0;
 
+    $('#decremBreakInput, #incremBreakInput, #decremSessionInput, #incremSessionInput').on('mousedown', function(){
+        heldBtn = '#' + this.id;
+        btnTimer = setInterval(function(){ inputAccelerator(heldBtn) }, 200);
+    });
+    $('#decremBreakInput, #incremBreakInput, #decremSessionInput, #incremSessionInput').on('mouseup', function(){
+        clearInterval(btnTimer);
+    });
+    function inputAccelerator(elementId){
+        $(elementId).trigger('click');
+    }
     $('#decremBreakInput').on('click', function(){
         if(startStop === 0){
             if(totalBreakSecs > 60) {
@@ -54,7 +67,7 @@ $(document).ready(function(){
             }
         }
     });
-    $('#progressCircle, #currentTime').on('click', function(){
+    $('#progressCircle, #currentTime, #currentState').on('click', function(){
         if(startStop === 0){
             clearInterval(timer);
             startSessionSecs = totalSessionSecs;
@@ -62,6 +75,7 @@ $(document).ready(function(){
             timer = setInterval(startTimer, 1000);
             progressCircle.classList.add('start');
             startStop = 1;
+            currentStateLabel.innerHTML = "GO!";
         } else {
             resetTimer();
         }
@@ -83,8 +97,9 @@ $(document).ready(function(){
                 currentTimeLabel.innerHTML = timestamp;
 
                 if(totalSessionSecs === 0){
-                    progressCircle.classList.remove('start');
                     progressCircle.classList.add('break');
+                    progressCircle.classList.remove('start');
+                    currentStateLabel.innerHTML = "BREAK!";
                 }
             //Run Break Timer
             } else if (totalBreakSecs > 0){
@@ -111,8 +126,8 @@ $(document).ready(function(){
         stop2.setAttribute('offset', percentage + '%');
     }
     function updateBreakProgress(percentage){
-        stop3.setAttribute('offset', percentage + '%');
-        stop4.setAttribute('offset', percentage + '%');
+        stop3.setAttribute('offset', (100 - percentage) + '%');
+        stop4.setAttribute('offset', (100 - percentage) + '%');
     }
     function resetTimer(){
         clearInterval(timer);
@@ -122,6 +137,7 @@ $(document).ready(function(){
         totalBreakSecs = (breakLengthLabel.innerHTML) * 60;
         currentTimeLabel.innerHTML = Math.floor(totalSessionSecs / 60) + ":00";
         startStop = 0;
+        currentStateLabel.innerHTML = "Start!";
         updateSessionProgress(0);
         updateBreakProgress(0);
     }
